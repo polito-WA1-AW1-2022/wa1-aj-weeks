@@ -1,4 +1,4 @@
-# Exercise 1: Improve my scores
+# Exercise 1.1: Improve my scores
 _Goal: basic handling of JS Arrays_
 
 Develop a small JS program to manage the scores of your exams that you got in your Bachelor degree. You should:
@@ -11,7 +11,7 @@ Develop a small JS program to manage the scores of your exams that you got in yo
 - Add two new scores, at the end, equal to the (rounded) average of the existing scores
 - Print both arrays, comparing the scores before and after the “improvement”, and showing the averages in both cases.
 
-# Exercise 2: My Courses' List
+# Exercise 1.2: My Courses' List
 _Goal: basic handling of JS Strings and String Arrays_
 
 Develop a small JS program to manage a list of your courses.
