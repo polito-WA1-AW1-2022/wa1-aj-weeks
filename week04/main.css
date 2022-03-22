@@ -1,0 +1,40 @@
+h1 {
+	color: #001cff;
+	/* background-color: yellow; */
+}
+
+main h1 {
+    /* background-color: green; */
+    margin-top: 0;
+}
+
+#navbar {
+    background-color: grey;
+    color:white;
+    font-size: larger;
+    font-family: sans-serif;
+}
+
+#maincontent {
+    color:blue;
+}
+
+td.name {
+    font-style: italic;
+}
+
+div#container {
+    display: flex;
+}
+
+#container aside {
+    background-color: grey;
+    padding-left: 10px;
+    padding-right: 10px;
+    flex: 1;
+}
+
+#container main {
+    margin-left: 15px;
+    flex:4;
+}
