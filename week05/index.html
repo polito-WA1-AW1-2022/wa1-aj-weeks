@@ -10,7 +10,9 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
-    <!-- <script src='main.js'></script> -->
+    <script defer src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <script defer src="exams.js"></script>
+    <script defer src='main.js'></script>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -33,26 +35,25 @@
                             <th class="name">Name</th>
                             <th>Score</th>
                             <th>Date</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="name">Web applications I</td>
-                            <td>30</td>
-                            <td>2022-03-22</td>
-                        </tr>
-                        <tr>
-                            <td class="name">Software Engineering</td>
-                            <td>28</td>
-                            <td>2022-02-13</td>
-                        </tr>
-                        <tr>
-                            <td class="name">Information Systems</td>
-                            <td>24</td>
-                            <td>2021-07-30</td>
-                        </tr>
-
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <td><input type='text' class="form-control" name='examname' required/></td>
+                            <td><input type='number' class="form-control" name='examscore' min=18 max=30 required/></td>
+                            <td><input type='date' class="form-control" name='examdate' required/></td>
+                            <td><button id="addButton" type="button" class="btn btn-success">+</button></td>
+                        </tr>
+                        <tr>
+                        <td></td>
+                        <td id="average"></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </tfoot>
                 </table>
             </main>
         </div>
