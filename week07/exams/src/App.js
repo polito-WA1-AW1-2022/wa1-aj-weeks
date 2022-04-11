@@ -13,7 +13,7 @@ function App() {
     <Container>
       <Row>
         <Col>
-          <h1>My Exams</h1>
+          <h1>My Exams (Average: {myexamlist.average()})</h1>
         </Col>
       </Row>
       <Row>
