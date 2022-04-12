@@ -4,21 +4,33 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import ExamTable from './ExamTable';
 import load_data from './load_data';
+import { useState } from 'react';
 
 const myexamlist = load_data() ;
 
 function App() {
 
+  const [exams, setExams] = useState(myexamlist.examList);
+  // an array of objects of type Exam
+
+  const removeExam = (code) => {
+    setExams((oldExams)=>(oldExams.filter((ex)=>(ex.code!==code))));
+  }
+
+  // const examAverage = () => ( exams.reduce((s,e)=>(s+e.score),0) / exams.length)
+  const examSum = exams.reduce((s,e)=>(s+e.score),0);
+  const examAvg = examSum/ exams.length;
+
   return (
     <Container>
       <Row>
         <Col>
-          <h1>My Exams (Average: {myexamlist.average()})</h1>
+          <h1>My Exams (Average: {examAvg} )</h1> 
         </Col>
       </Row>
       <Row>
         <Col>
-          <ExamTable exams={myexamlist}/>
+          <ExamTable exams={exams} removeExam={removeExam} />
         </Col>
       </Row>
 
