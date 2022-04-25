@@ -1,0 +1,14 @@
+
+App <--
+    Title
+    ExamTable <--
+        TableHeading
+        TableBody
+            *(N) ExamRow <--
+                ExamData <--
+                    3-4 td
+                ExamActions <--
+                    1 td
+                        button
+        TableFoot
+            ExamInsert
