@@ -17,6 +17,13 @@ function App() {
     setExams((oldExams)=>(oldExams.filter((ex)=>(ex.code!==code))));
   }
 
+  const addExam = (exam) => {
+    // setExams([...exams, exam]);
+    // when then new state depends on the old state, always use a callback
+
+    setExams((oldExams)=>[...oldExams, exam]);
+  }
+
   // const examAverage = () => ( exams.reduce((s,e)=>(s+e.score),0) / exams.length)
   const examSum = exams.reduce((s,e)=>(s+e.score),0);
   const examAvg = examSum/ exams.length;
@@ -30,7 +37,7 @@ function App() {
       </Row>
       <Row>
         <Col>
-          <ExamTable exams={exams} removeExam={removeExam} />
+          <ExamTable exams={exams} removeExam={removeExam} addExam={addExam}/>
         </Col>
       </Row>
 

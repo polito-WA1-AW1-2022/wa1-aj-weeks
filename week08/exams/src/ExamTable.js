@@ -28,7 +28,7 @@ function ExamTable(props) {
                     editable={editable} removeExam={props.removeExam} />))}
             </tbody>
         </Table>
-        {editable && <AddExamForm />}
+        {editable && <AddExamForm addExam={props.addExam}/>}
     </>;
 }
 
