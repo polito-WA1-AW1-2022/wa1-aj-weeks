@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 function ExamRow(props) {
     return <tr>
         <ExamData exam={props.exam}/>
-        {props.editable && <ExamActions exam={props.exam} removeExam={props.removeExam}/>}
+        {props.editable && <ExamActions exam={props.exam} mode={props.mode} removeExam={props.removeExam}  editExam={props.editExam} />}
     </tr>;
 }
 
@@ -18,8 +18,8 @@ function ExamData(props) {
 
 function ExamActions(props) {
     return <td>
-        <Button variant='outline-danger' onClick={()=>{props.removeExam(props.exam.code)}}>Delete</Button> &nbsp;
-        <Button variant='outline-warning'>Edit</Button>
+        <Button variant='outline-danger' disabled={props.mode!=='change'} onClick={()=>{props.removeExam(props.exam.code)}}>Delete</Button> &nbsp;
+        <Button variant='outline-warning' disabled={props.mode!=='change'} onClick={()=>{props.editExam(props.exam)}}>Edit</Button>
     </td> ;
 }
 

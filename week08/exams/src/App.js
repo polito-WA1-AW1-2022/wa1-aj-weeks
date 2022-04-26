@@ -24,6 +24,10 @@ function App() {
     setExams((oldExams)=>[...oldExams, exam]);
   }
 
+  const editExam = (exam) => {
+    setExams((es)=>(es.map((e)=>(e.code===exam.code ? exam : e))));
+  }
+
   // const examAverage = () => ( exams.reduce((s,e)=>(s+e.score),0) / exams.length)
   const examSum = exams.reduce((s,e)=>(s+e.score),0);
   const examAvg = examSum/ exams.length;
@@ -37,7 +41,7 @@ function App() {
       </Row>
       <Row>
         <Col>
-          <ExamTable exams={exams} removeExam={removeExam} addExam={addExam}/>
+          <ExamTable exams={exams} removeExam={removeExam} addExam={addExam} editExam={editExam}/>
         </Col>
       </Row>
 

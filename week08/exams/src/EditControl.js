@@ -3,8 +3,8 @@ import { Button } from "react-bootstrap";
 function EditControl(props) {
 
     return         <p align='right'>{props.editable ?
-        <Button variant="outline-secondary" onClick={()=>{props.toggleEditable()}}>View</Button> :
-        <Button variant="outline-secondary" onClick={props.toggleEditable}>Change</Button>}</p> ;
+        <Button variant="outline-secondary" onClick={()=>{props.setMode('view')}}>View</Button> :
+        <Button variant="outline-secondary" onClick={()=>{props.setMode('change')}}>Change</Button>}</p> ;
 
 }
 

@@ -1,18 +1,32 @@
 import { useState } from "react";
-import { Table } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 import AddExamForm from "./AddExamForm";
 import EditControl from "./EditControl";
 import ExamRow from "./ExamRow";
 
 function ExamTable(props) {
 
-    const [editable, setEditable] = useState(false);
+    // const [editable, setEditable] = useState(false);
+    const [mode, setMode] = useState('view');  // allowed values: view, change, add, edit
+    const [editedExam, setEditedExam] = useState({}) ;
+
+    const editable = (mode !== 'view');
+
 
     // const changeEditable = (value) => { setEditable(value); };
-    const toggleEditable = () => { setEditable((oldEditable) => (!oldEditable)) }
+    // const toggleEditable = () => { setEditable((oldEditable) => (!oldEditable)) }
 
+    // const handleEditExam = () => {
+    //     setFormMode('edit') ;
+    // }
+    
+    const editExam = (exam) => {
+        setMode('edit');
+        setEditedExam(exam);
+    }
+    
     return <>
-        <EditControl editable={editable} toggleEditable={toggleEditable} />
+        <EditControl editable={editable} setMode={setMode} />
         <Table striped={true}>
             <thead>
                 <tr>
@@ -25,10 +39,16 @@ function ExamTable(props) {
             </thead>
             <tbody>
                 {props.exams.map((exam) => (<ExamRow key={exam.code} exam={exam}
-                    editable={editable} removeExam={props.removeExam} />))}
+                    editable={editable} removeExam={props.removeExam} mode={mode} setMode={setMode} editExam={editExam}/>))}
             </tbody>
         </Table>
-        {editable && <AddExamForm addExam={props.addExam}/>}
+        {mode === 'change' &&
+            <div align='right'><Button type='button' variant='outline-success' onClick={() => setMode('add')}>Add</Button></div>}
+        {mode === 'add' &&
+            <AddExamForm mode={mode} setMode={setMode} addOrEditExam={props.addExam} />}
+        {mode === 'edit' &&
+            <AddExamForm mode={mode} editedExam={editedExam} setMode={setMode} addOrEditExam={props.editExam} />}
+
     </>;
 }
 
