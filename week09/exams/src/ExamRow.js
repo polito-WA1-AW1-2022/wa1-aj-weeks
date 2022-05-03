@@ -16,6 +16,7 @@ function ExamData(props) {
     </>;
 }
 
+/*disabled={props.mode!=='change'}*/
 function ExamActions(props) {
     return <td>
         <Button variant='outline-danger' disabled={props.mode!=='change'} onClick={()=>{props.removeExam(props.exam.code)}}>Delete</Button> &nbsp;

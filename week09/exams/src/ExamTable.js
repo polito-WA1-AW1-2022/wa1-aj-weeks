@@ -47,7 +47,7 @@ function ExamTable(props) {
         {mode === 'add' &&
             <AddExamForm mode={mode} setMode={setMode} addOrEditExam={props.addExam} />}
         {mode === 'edit' &&
-            <AddExamForm mode={mode} editedExam={editedExam} setMode={setMode} addOrEditExam={props.editExam} />}
+            <AddExamForm key={editedExam.code} mode={mode} editedExam={editedExam} setMode={setMode} addOrEditExam={props.editExam} />}
 
     </>;
 }
