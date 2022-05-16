@@ -1,0 +1,14 @@
+GET http://localhost:3000/api/v1/exams
+
+###
+
+POST http://localhost:3000/api/v1/exams 
+Content-Type: application/json
+
+{
+    "code": "99XXX",
+    "name": "Test Test Test",
+    "cfu": 10,
+    "score": 18,
+    "date": "2022-05-10"
+}
