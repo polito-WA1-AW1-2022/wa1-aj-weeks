@@ -3,8 +3,8 @@
 const PORT = 3001;
 
 const express = require('express');
-const cors = require('cors');
 const morgan = require('morgan');
+const cors = require('cors');
 
 const dao = require('./dao');
 
