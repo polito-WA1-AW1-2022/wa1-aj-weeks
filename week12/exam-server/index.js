@@ -33,7 +33,7 @@ app.get(PREFIX + '/exams', (req, res) => {
 // POST /exams
 
 app.post(PREFIX + '/exams', [
-    body('code').isLength({ min: 5, max: 5 }),
+    body('code').isLength({ min: 5, max: 7 }),
     body('name').not().isEmpty(),
     body('cfu').isNumeric(),
     body('score').isNumeric(),
@@ -56,7 +56,7 @@ app.post(PREFIX + '/exams', [
 // PUT /exams
 
 app.put(PREFIX + '/exams', [
-    body('code').isLength({ min: 5, max: 5 }),
+    body('code').isLength({ min: 5, max: 7 }),
     body('name').not().isEmpty(),
     body('cfu').isNumeric(),
     body('score').isNumeric(),
@@ -79,7 +79,7 @@ app.put(PREFIX + '/exams', [
 // DELETE /exams/:code
 
 app.delete(PREFIX + '/exams/:code', [
-    param('code').isLength({ min: 5, max: 5 })
+    param('code').isLength({ min: 5, max: 7 })
 ], async (req, res) => { 
 
     const errors = validationResult(req);
