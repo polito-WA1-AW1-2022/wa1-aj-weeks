@@ -1,0 +1,37 @@
+@host = localhost
+@port = 3001
+@APIURL = http://{{host}}:{{port}}/api/v1
+
+### GET ALL EXAMS
+
+GET {{APIURL}}/exams
+
+### ADD ONE EXAM
+
+POST {{APIURL}}/exams 
+Content-Type: application/json
+
+{
+    "code": "12345",
+    "name": "Test Test Test",
+    "cfu": 10,
+    "score": 18,
+    "date": "2022-05-10"
+}
+
+### EDIT ONE EXAM
+
+PUT {{APIURL}}/exams 
+Content-Type: application/json
+
+{
+    "code": "12345",
+    "name": "ZZZZZZZZZZZZZ",
+    "cfu": 10,
+    "score": 18,
+    "date": "2022-05-10"
+}
+
+### DELETE ONE EXAM
+
+DELETE {{APIURL}}/exams/12345
