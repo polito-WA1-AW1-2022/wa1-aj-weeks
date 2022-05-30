@@ -16,20 +16,49 @@ function App() {
 
   const [loading, setLoading] = useState(true);
 
+  async function reloadExams() {
+    const list = await API.readExams();
+    setExams(list);
+    setLoading(false);
+  }
+
+
   // INITIAL LOAD OF THE EXAM LIST, at application startup time
   useEffect(() => {
-    async function load() {
-      const list = await API.readExams();
-      setExams(list);
-      setLoading(false);
-    }
-    load();
+    reloadExams();
   }, []);
 
   // TO DO!!! INTEGRATE API CALLS
-  const removeExam = async (code) => {}
-  const addExam = async (exam) => {}
-  const editExam = async (exam) => {}
+  const removeExam = async (code) => {
+    try {
+      setLoading(true);
+      await API.removeExam(code);
+      // setExams((oldexams)=>(oldexams.filter((e)=>(e.code !== code))));
+      reloadExams();
+      setLoading(false);
+    } catch (e) {
+      // show an error message somewhere on the page... setErrorMsg(...)
+    }
+  }
+
+  const addExam = async (exam) => {
+
+    try {
+      await API.addExam(exam);
+      reloadExams();
+    } catch (e) {
+      throw(e);
+    }
+  }
+  const editExam = async (exam) => {
+    try {
+      await API.editExam(exam);
+      reloadExams();
+    } catch (e) {
+      throw(e);
+    }
+
+   }
 
 
   const getExamByCode = (code) => {

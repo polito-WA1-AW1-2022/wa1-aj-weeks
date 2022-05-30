@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Form } from 'react-bootstrap';
+import { Alert, Button, Form } from 'react-bootstrap';
 import { useNavigate, useParams } from "react-router-dom";
 
 import { Exam } from "./exam";
@@ -18,12 +18,18 @@ function AddExamForm(props) {
     const [score, setScore] = useState(props.mode === 'edit' ? editedExam.score : 0);
     const [date, setDate] = useState(props.mode === 'edit' ? editedExam.date.format('YYYY-MM-DD') : '');
 
+    const [errMsg, setErrMsg] = useState('');
+
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await props.addOrEditExam(new Exam(code, name, 6, Number(score), date));
-        navigate('/change');
+        try {
+            await props.addOrEditExam(new Exam(code, name, 6, Number(score), date));
+            navigate('/change');
+        } catch(e) {
+            setErrMsg(String(e));
+        }
     }
 
     const handleCancel = (event) => {
@@ -31,6 +37,7 @@ function AddExamForm(props) {
     }
 
     return <>
+        {errMsg && <Alert variant='danger'>{errMsg}</Alert>}
         <div style={{ borderColor: 'grey', borderWidth: 2, borderStyle: 'dotted', padding: 10 }}>
             <Form onSubmit={handleSubmit} >
                 <Form.Group className='mb-3' >
